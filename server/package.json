@@ -5,8 +5,10 @@
   "author": "Juwon Baek",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "koa": "^2.13.0",
-    "koa-router": "^9.0.1"
+    "koa-router": "^9.0.1",
+    "mongoose": "^5.9.20"
   },
   "devDependencies": {
     "eslint": "^7.3.1",

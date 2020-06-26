@@ -1,3 +1,5 @@
+require('dotenv').config();     // .env configure file load
+
 const Koa = require('koa');
 const Router = require('koa-router');
 
@@ -5,6 +7,22 @@ const app = new Koa();
 const router = new Router();
 const api = require('./api');
 const { route } = require('./api');
+
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(process.env.MONGO_URI, {
+    useMongoClient: true
+}).then(
+    (response) => {
+        console.log('Successfully connected to mongodb');
+    }
+).catch(e => {
+    console.error(e);
+});
+
+const port = process.env.port || 4000;
 
 router.use('/api', api.routes());
 
