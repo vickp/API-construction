@@ -1,3 +1,4 @@
+// DB Model Definition
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -21,4 +22,5 @@ const Book = new Schema({
 });
 
 // Convert Schema to Model, Export!
+// model('Schema Name', Schema Object, Collection Name)
 module.exports = mongoose.model('Book', Book);

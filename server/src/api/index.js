@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const Router = require('koa-router');
 
 const api = new Router();
