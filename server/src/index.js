@@ -8,10 +8,11 @@ const router = new Router();
 const api = require('./api');
 
 const mongoose = require('mongoose');
+const bodyParser = require('koa-bodyparser');
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;          // use native Promise from Node.js
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGO_URI, {   // use mongoDB
     useMongoClient: true
 }).then(
     (response) => {
@@ -22,6 +23,8 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 const port = process.env.port || 4000;
+
+app.use(bodyParser);        // use bodyparser, please write before router code
 
 router.use('/api', api.routes());
 
@@ -44,6 +47,6 @@ router.get('/about/:name', (ctx, next) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(4000, () => {
+app.listen(port, () => {
     console.log('server is listening to port 4000');
 })
