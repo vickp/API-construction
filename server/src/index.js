@@ -6,7 +6,6 @@ const Router = require('koa-router');
 const app = new Koa();
 const router = new Router();
 const api = require('./api');
-const { route } = require('./api');
 
 const mongoose = require('mongoose');
 
